@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 35
     buildToolsVersion '35.0.0'
-    namespace 'com.android.simple'
+    namespace 'uni.app.UNIF095FFD'
     defaultConfig {
-        applicationId "com.android.simple"
+        applicationId "uni.app.UNIF095FFD"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 1
@@ -18,10 +18,10 @@ android {
     }
     signingConfigs {
         config {
-            keyAlias 'key0'
-            keyPassword '123456'
-            storeFile file('test.jks')
-            storePassword '123456'
+            keyAlias '__uni__f095ffd'
+            keyPassword 'phxWxwgM'
+            storeFile file('e03f3c5c829b07106ddfe67e65ff7f2f.keystore')
+            storePassword 'phxWxwgM'
             v1SigningEnabled true
             v2SigningEnabled true
         }
