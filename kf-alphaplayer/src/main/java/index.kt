@@ -15,16 +15,19 @@ import uts.alphaplayer.android.AlphaPlayerNative
 open class AnimationOpitons (
     @JsonNotNull
     open var type: String,
+    @JsonNotNull
+    open var place: String,
 ) : UTSObject()
 typealias AnimationPlay = (options: AnimationOpitons) -> Unit
 typealias AnimationStop = () -> Unit
 typealias GetMemoryInfo = () -> UTSArray<Number>
 val animationPlay: AnimationPlay = fun(options: AnimationOpitons) {
-    console.log("播放动效", options.type)
-    AlphaPlayerNative.animationPlay(options.type)
+    console.log("播放动效", options)
+    AlphaPlayerNative.animationPlay(options.type, options.place)
 }
 val animationStop: AnimationStop = fun() {
     console.log("结束动效")
+    AlphaPlayerNative.animationStop()
 }
 val getMemoryInfo: GetMemoryInfo = fun(): UTSArray<Number> {
     var kotlinArray = AlphaPlayerNative.getMemInfoKotlin()
@@ -32,9 +35,10 @@ val getMemoryInfo: GetMemoryInfo = fun(): UTSArray<Number> {
 }
 open class AnimationOpitonsJSONObject : UTSJSONObject() {
     open lateinit var type: String
+    open lateinit var place: String
 }
 fun animationPlayByJs(options: AnimationOpitonsJSONObject): Unit {
-    return animationPlay(AnimationOpitons(type = options.type))
+    return animationPlay(AnimationOpitons(type = options.type, place = options.place))
 }
 fun animationStopByJs(): Unit {
     return animationStop()
